@@ -1,0 +1,69 @@
+import app
+from constInfo import TextColor
+import localeInfo
+app.ServerName = None
+
+SRV1 = {
+	"name":"|cffffd500|h Death2", #GOLD
+	"host":"54.37.157.249",
+	"auth1":30001,
+	"ch1":30003,
+	"ch2":30011,
+	"ch3":31011,
+	"ch4":31015,
+}
+
+STATE_NONE = TextColor(localeInfo.CHANNEL_STATUS_OFFLINE, "FF0000") #RED
+
+STATE_DICT = {
+	0: TextColor(localeInfo.CHANNEL_STATUS_OFFLINE, "FF0000"), #RED
+	1: TextColor(localeInfo.CHANNEL_STATUS_RECOMMENDED, "00ff00"), #GREEN
+	2: TextColor(localeInfo.CHANNEL_STATUS_BUSY, "ffff00"), #YELLOW
+	3: TextColor(localeInfo.CHANNEL_STATUS_FULL, "ff8a08") #ORANGE
+}
+
+SERVER1_CHANNEL_DICT = {
+	0: {"key":10, "name":"|cffFFFFFF|hCH-1", "ip":SRV1["host"], "tcp_port":SRV1["ch1"], "udp_port":SRV1["ch1"], "state":STATE_NONE,},
+	1: {"key":11, "name":"|cffFFFFFF|hCH-2", "ip":SRV1["host"], "tcp_port":SRV1["ch2"], "udp_port":SRV1["ch2"], "state":STATE_NONE,},
+	2: {"key":12, "name":"|cffFFFFFF|hCH-3", "ip":SRV1["host"], "tcp_port":SRV1["ch3"], "udp_port":SRV1["ch3"], "state":STATE_NONE,},
+	3: {"key":13, "name":"|cffFFFFFF|hCH-4", "ip":SRV1["host"], "tcp_port":SRV1["ch4"], "udp_port":SRV1["ch4"], "state":STATE_NONE,},
+}
+
+REGION_NAME_DICT = {
+	0: SRV1["name"],
+}
+
+REGION_AUTH_SERVER_DICT = {
+	0: {
+		0: {"ip": SRV1["host"], "port": SRV1["auth1"],},
+		1: {"ip": SRV1["host"], "port": SRV1["auth1"],},
+		2: {"ip": SRV1["host"], "port": SRV1["auth1"],},
+		3: {"ip": SRV1["host"], "port": SRV1["auth1"],},
+	}
+}
+
+REGION_DICT = {
+	0: {
+		1: {"name": SRV1["name"], "channel": SERVER1_CHANNEL_DICT,},
+	},
+}
+
+MARKADDR_DICT = {
+	10: {"ip": SRV1["host"], "tcp_port": SRV1["ch1"], "mark": "10.tga", "symbol_path": "10",},
+}
+
+TESTADDR = {"ip": SRV1["host"], "tcp_port": SRV1["ch1"], "udp_port": SRV1["ch1"],}
+
+if app.__BL_MULTI_LANGUAGE__:
+	def ReloadVariables():
+		global STATE_NONE
+		STATE_NONE = TextColor(localeInfo.CHANNEL_STATUS_OFFLINE, "FF0000") #RED
+
+		global STATE_DICT
+		STATE_DICT = {
+			0: TextColor(localeInfo.CHANNEL_STATUS_OFFLINE, "FF0000"), #RED
+			1: TextColor(localeInfo.CHANNEL_STATUS_RECOMMENDED, "00ff00"), #GREEN
+			2: TextColor(localeInfo.CHANNEL_STATUS_BUSY, "ffff00"), #YELLOW
+			3: TextColor(localeInfo.CHANNEL_STATUS_FULL, "ff8a08") #ORANGE
+		}
+
